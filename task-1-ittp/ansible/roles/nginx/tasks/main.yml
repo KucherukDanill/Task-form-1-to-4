@@ -1,0 +1,46 @@
+---
+- name: Install Nginx
+  apt:
+    name: nginx
+    state: present
+    update_cache: no
+  notify: restart nginx
+
+- name: Create website dir
+  file:
+    path: "{{ nginx_html_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Add index.html
+  template:
+    src: index.html.j2
+    dest: "{{ nginx_html_dir }}/index.html"
+    mode: '0644'
+  notify: restart nginx
+
+- name: Configure Nginx
+  template:
+    src: nginx.conf.j2
+    dest: "{{ nginx_conf_path }}"
+    mode: '0644'
+    validate: "nginx -t -c %s"
+  notify: restart nginx
+
+- name: Start Nginx
+  service:
+    name: nginx
+    state: started
+    enabled: yes
+
+- name: Wait for Nginx to start
+  wait_for:
+    port: 80
+    timeout: 10
+
+- name: Check Nginx availability
+  uri:
+    url: http://localhost
+    return_content: yes
+  register: nginx_response
+  failed_when: "'Привет!' not in nginx_response.content"

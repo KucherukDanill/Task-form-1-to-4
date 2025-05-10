@@ -1,0 +1,6 @@
+---
+- name: Configu Nginx Web Server
+  hosts: local
+  become: true
+  roles:
+    - nginx

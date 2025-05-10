@@ -1,0 +1,1 @@
+0 * * * * /path/to/task-3-ittp/alert.sh

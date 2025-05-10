@@ -1,0 +1,33 @@
+
+PLAY [Configu Nginx Web Server] ************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [nginx : Install Nginx] ***************************************************
+ok: [localhost]
+
+TASK [nginx : Create website dir] **********************************************
+ok: [localhost]
+
+TASK [nginx : Add index.html] **************************************************
+changed: [localhost]
+
+TASK [nginx : Configure Nginx] *************************************************
+ok: [localhost]
+
+TASK [nginx : Start Nginx] *****************************************************
+ok: [localhost]
+
+TASK [nginx : Wait for Nginx to start] *****************************************
+ok: [localhost]
+
+TASK [nginx : Check Nginx availability] ****************************************
+ok: [localhost]
+
+RUNNING HANDLER [nginx : restart nginx] ****************************************
+changed: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=9    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
