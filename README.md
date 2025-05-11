@@ -6,7 +6,7 @@
 
 **Результат:** Ansible-плейбук для автоматической установки и настройки веб-сервера Nginx с поддержкой UTF-8 и проверкой доступности.
 
-**Проект:** [Ansible Playbook](https://github.com/KucherukDanill/Task-form-1-to-4/tree/master/task-1)
+**Проект:** [Task 1](https://github.com/KucherukDanill/Task-form-1-to-4/tree/master/task-1)
 
 **Подробнее:** [task-1/README.md](https://github.com/KucherukDanill/Task-form-1-to-4/tree/master/task-1/README.md)
 
@@ -14,7 +14,7 @@
 
 **Результат:** Создан Docker-контейнер с Nginx, настроенным для работы по HTTPS и автоматическим перенаправлением с HTTP на HTTPS.
 
-**Проект:** [Nginx](https://github.com/KucherukDanill/Task-form-1-to-4/tree/master/task-2)
+**Проект:** [Task 2](https://github.com/KucherukDanill/Task-form-1-to-4/tree/master/task-2)
 
 **Подробнее:** [task-2/README.md](https://github.com/KucherukDanill/Task-form-1-to-4/tree/master/task-2/README.md)
 
@@ -22,7 +22,8 @@
 
 **Результат:** Разработан bash-скрипт для проверки свободного места на диске с отправкой уведомлений по SMTP при достижении критического порога.
 
-**Проект:** [Bash script](https://github.com/KucherukDanill/Task-form-1-to-4/tree/master/task-3)
+**Проект:** [Task 3](https://github.com/KucherukDanill/Task-form-1-to-4/tree/master/task-3)
+
 **Подробнее:** [task-3/README.md](https://github.com/KucherukDanill/Task-form-1-to-4/tree/master/task-3/README.md)
 
 ## Задание 4: CI/CD для Nginx с Docker Compose
@@ -31,8 +32,8 @@
 
 **Технологии:** GitHub Actions, Docker Hub, Docker, Docker Compose
 
-**Проект:** [CI/CD](https://github.com/KucherukDanill/Task-form-1-to-4/tree/master/task4-nginx-ci-cd-project)
-**Подробнее:** [task-3/README.md](https://github.com/KucherukDanill/Task-form-1-to-4/tree/master/task4-nginx-ci-cd-project/README.md)
+**Проект:** [Task 4](https://github.com/KucherukDanill/Task-form-1-to-4/tree/master/task4-nginx-ci-cd-project)
+**Подробнее:** [task4-nginx-ci-cd-project/README.md](https://github.com/KucherukDanill/Task-form-1-to-4/tree/master/task4-nginx-ci-cd-project/README.md)
 
 ## Структура репозитория
 
