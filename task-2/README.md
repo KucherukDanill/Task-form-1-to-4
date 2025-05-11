@@ -104,6 +104,37 @@ rem@ubuntu:~$ curl -vk https://localhost:443
 </body>
 * Connection #0 to host localhost left intact
 ```
+Результат выполенния `curl -vk http://localhost:80`
+
+```bash
+rem@ubuntu:~$ curl -vk http://localhost:80
+* Host localhost:80 was resolved.
+* IPv6: ::1
+* IPv4: 127.0.0.1
+*   Trying [::1]:80...
+* Connected to localhost (::1) port 80
+> GET / HTTP/1.1
+> Host: localhost
+> User-Agent: curl/8.5.0
+> Accept: */*
+>
+< HTTP/1.1 301 Moved Permanently
+< Server: nginx/1.26.3
+< Date: Sun, 11 May 2025 18:16:41 GMT
+< Content-Type: text/html
+< Content-Length: 169
+< Connection: keep-alive
+< Location: https://localhost/
+<
+<html>
+<head><title>301 Moved Permanently</title></head>
+<body>
+<center><h1>301 Moved Permanently</h1></center>
+<hr><center>nginx/1.26.3</center>
+</body>
+</html>
+* Connection #0 to host localhost left intact
+```
 
 ## Реализация
 
