@@ -33,6 +33,7 @@
 **Технологии:** GitHub Actions, Docker Hub, Docker, Docker Compose
 
 **Проект:** [Task 4](https://github.com/KucherukDanill/Task-form-1-to-4/tree/master/task4-nginx-ci-cd-project)
+
 **Подробнее:** [task4-nginx-ci-cd-project/README.md](https://github.com/KucherukDanill/Task-form-1-to-4/tree/master/task4-nginx-ci-cd-project/README.md)
 
 ## Структура репозитория
