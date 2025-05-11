@@ -6,6 +6,7 @@
 
 **Результат:** Ansible-плейбук для автоматической установки и настройки веб-сервера Nginx с поддержкой UTF-8 и проверкой доступности.
 
+**ПроектЖ** [task 1](https://github.com/KucherukDanill/Task-form-1-to-4/tree/master/task-1)
 **Подробнее:** [task-1/README.md](task-1/README.md)
 
 ## Задание 2: Docker и Nginx с HTTPS
