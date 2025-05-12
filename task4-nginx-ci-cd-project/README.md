@@ -1,12 +1,17 @@
 # CI/CD Pipeline для Nginx приложения
 
-Этот проект содержит CI/CD пайплайна для сборки и доставки Nginx приложения с использованием Docker и Docker Compose.
+Этот проект содержит CI/CD пайплайна для сборки и доставки Nginx приложения с использованием GitHub Actions.
 
 ## Результат 
 
+![изображение](https://github.com/user-attachments/assets/7a30da26-ee2c-46e8-84d2-bfc2e0597f53)
 
 
-## Лог 
+CI:
+![изображение](https://github.com/user-attachments/assets/cc27daaf-561a-4d86-a6cf-05f93b730563)
+
+CD:
+![изображение](https://github.com/user-attachments/assets/dd8ef4a5-ee0b-4d60-813f-38ce9bcfb2db)
 
 
 
@@ -30,6 +35,7 @@
 - Остановка предыдущей версии контейнера (docker-compose down)
 - Запуск новой версии контейнера (docker-compose up -d)
 - Проверка статуса деплоя
+[github_cicd.txt](https://github.com/user-attachments/files/20154474/github_cicd.txt)
 
 ## Сам пайалайн
 
@@ -37,14 +43,15 @@
 name: Docker CI/CD Pipeline with Docker Compose
 
 on:
-  push:
+  push:[github_cicd.txt](https://github.com/user-attachments/files/20154483/github_cicd.txt)
+
     branches: ["master"]
   pull_request:
     branches: ["master"]
   workflow_dispatch:
 
 env:
-  DOCKER_IMAGE: nginx-server 
+  DOCKER_IMAGE: nginx-server
 
 jobs:
   build:
@@ -75,11 +82,20 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          IMAGE_FULL_NAME=${{ secrets.DOCKER_HUB_USERNAME }}/${{ env.DOCKER_IMAGE }}
-          docker build -t $IMAGE_FULL_NAME:${{ env.VERSION }} -t $IMAGE_FULL_NAME:latest .
-          docker push $IMAGE_FULL_NAME:${{ env.VERSION }}
-          docker push $IMAGE_FULL_NAME:latest
-          echo "DEPLOY_VERSION=$IMAGE_FULL_NAME:${{ env.VERSION }}" >> $GITHUB_ENV
+          DOCKER_USERNAME=${{ secrets.DOCKER_HUB_USERNAME }}
+          DOCKER_IMAGE=${{ env.DOCKER_IMAGE }}
+          VERSION=${{ env.VERSION }}
+          
+          IMAGE_FULL_NAME=${DOCKER_USERNAME}/${DOCKER_IMAGE}
+          
+          echo "Собираем образ: ${IMAGE_FULL_NAME}:${VERSION}"
+          
+          docker build -t "${IMAGE_FULL_NAME}:${VERSION}" -t "${IMAGE_FULL_NAME}:latest" .
+          
+          docker push "${IMAGE_FULL_NAME}:${VERSION}"
+          docker push "${IMAGE_FULL_NAME}:latest"
+          
+          echo "DEPLOY_VERSION=${IMAGE_FULL_NAME}:${VERSION}" >> $GITHUB_ENV
 
   deploy:
     name: CD - Deploy Application
@@ -103,6 +119,10 @@ jobs:
           export DOCKER_USERNAME=${{ secrets.DOCKER_HUB_USERNAME }}
           export DOCKER_IMAGE=${{ env.DOCKER_IMAGE }}
           export DOCKER_TAG=${DEPLOY_IMAGE##*:}  
+          
+          echo "DOCKER_USERNAME: $DOCKER_USERNAME"
+          echo "DOCKER_IMAGE: $DOCKER_IMAGE"
+          echo "DOCKER_TAG: $DOCKER_TAG"
           
           docker-compose down
           docker-compose up -d
